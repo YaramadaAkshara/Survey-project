@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin(origins="*")
 public class SController {
-	
+	 
 	@Autowired
 	UserService userobj;
 	@Autowired
@@ -54,17 +56,17 @@ public class SController {
 		return null;
 	}
 	
-	@GetMapping(value="/answersreturn/{email}",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Answers> getAnswersByEmail(@PathVariable (value = "email", required = true) @Valid String email ) throws Exception
+	@GetMapping(value="/answersreturn/{email1}",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Answers> getAnswersByEmail(@PathVariable (value = "email1", required = true) @Valid String email1 ) throws Exception
     {
-        Answers datasent=service.getAnswerDetails(email);
+        Answers datasent=service.getAnswerDetails(email1);
         return new ResponseEntity<> (datasent,HttpStatus.OK);
     }
 	  
-	 @PutMapping(value = "/update/{email}",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<Answers> updateStudent(@PathVariable (value = "email") String email,@RequestBody Answers updateans) throws Exception
+	 @PutMapping(value = "/update/{email1}",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+	    public ResponseEntity<Answers> updateStudent(@PathVariable (value = "email1") String email1,@RequestBody Answers updateans) throws Exception
 	    {
-		   Answers dataget=service.getfilledDetails(email);
+		   Answers dataget=service.getfilledDetails(email1);
 		   if(dataget==null)
 		   {
 			   return null;

@@ -3,25 +3,21 @@ package com.example.demo.survey;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Answers {
-	
-    @Autowired
-	Userentity obj;
+
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="userno")
 	private int userno;
 	@Column(name="email")
-	@JsonIgnore
-	public String email=obj.getEmail();
+	 public String email1;
 	@Column(name="userqA1")
 	private int qa1;
 	@Column(name="userqA2")
@@ -38,11 +34,11 @@ public class Answers {
 	public void setUserno(int userno) {
 		this.userno = userno;
 	}
-	public String getEmail() {
-		return email;
+	public String getEmail1() {
+		return email1;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail1(String email1) {
+		this.email1 = email1;
 	}
 	public int getQa1() {
 		return qa1;
@@ -76,18 +72,10 @@ public class Answers {
 	}
 	@Override
 	public String toString() {
-		return "Answers [userno=" + userno + ", email=" + email + ", qa1=" + qa1 + ", qa2=" + qa2 + ", qa3=" + qa3
+		return "Answers [userno=" + userno + ", email1=" + email1 + ", qa1=" + qa1 + ", qa2=" + qa2 + ", qa3=" + qa3
 				+ ", qa4=" + qa4 + ", qa5=" + qa5 + "]";
 	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-
 }

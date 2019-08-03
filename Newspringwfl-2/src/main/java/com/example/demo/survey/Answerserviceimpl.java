@@ -4,23 +4,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public  abstract class Answerserviceimpl implements Answerservice {
+public   class Answerserviceimpl implements Answerservice {
 	
 	@Autowired
-	Answerrepo repo;
+	private final Answerrepo repo;
 	
+	public Answerserviceimpl(Answerrepo repo)
+	{
+		this.repo=repo;
+	}
 	
-	
-	public Answers getAnswerDetails(String email) throws Exception {
+	public Answers getAnswerDetails(String email1) throws Exception {
 		// TODO Auto-generated method stub
 		
-	Answers me =repo.finduserbyemail(email);
+	Answers me =repo.finduserbyemail(email1);
 		return me;
 	}
-	public Answers getfilledDetails(String email) throws Exception {
+	public Answers getfilledDetails(String email1) throws Exception {
 		// TODO Auto-generated method stub
 		
-	Answers me =repo.finduserdetailsemail(email);
+	Answers me =repo.finduserdetailsemail(email1);
 		return me;
 	}
 
